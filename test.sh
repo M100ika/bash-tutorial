@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
-F="one two"
-trap 'ls $F' ERR
-F="three four"
-false
+
+set -Eeuo pipefail
+trap cleanup SIGINT SIGTERM ERR EXIT
+
+script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd -P)
+
+echo $script_dir
