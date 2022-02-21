@@ -1,0 +1,12 @@
+for ((i = 1; i <= 3; i++))
+do
+echo "...$i"
+sleep 1
+done#!/usr/bin/env bash
+
+set -Eeuo pipefail
+trap cleanup SIGINT SIGTERM ERR EXIT
+
+script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd -P)
+
+echo $script_dir
